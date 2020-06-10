@@ -5,6 +5,9 @@ class ScrapedProductsController < ApplicationController
   # GET /scraped_products.json
   def index
     @scraped_products = ScrapedProduct.all
+    if params[:product_type]
+      @scraped_products = @scraped_products.select { |p| p.product_type == params[:product_type] }
+    end
   end
 
   # GET /scraped_products/1

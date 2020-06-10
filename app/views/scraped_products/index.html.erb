@@ -8,7 +8,6 @@
       <th>Name</th>
       <th>Price</th>
       <th>Day scraped</th>
-      <th>Manufacturer</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,15 +18,9 @@
         <td><%= scraped_product.name %></td>
         <td><%= scraped_product.price %></td>
         <td><%= scraped_product.day_scraped %></td>
-        <td><%= scraped_product.manufacturer %></td>
-        <td><%= link_to 'Show', scraped_product %></td>
-        <td><%= link_to 'Edit', edit_scraped_product_path(scraped_product) %></td>
-        <td><%= link_to 'Destroy', scraped_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Scraped Product', new_scraped_product_path %>
