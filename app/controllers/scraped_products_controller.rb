@@ -4,7 +4,7 @@ class ScrapedProductsController < ApplicationController
   # GET /scraped_products
   # GET /scraped_products.json
   def index
-    @scraped_products = ScrapedProduct.all
+    @scraped_products = ScrapedProduct.where(day_scraped: Date.today)
     if params[:product_type]
       @scraped_products = @scraped_products.select { |p| p.product_type == params[:product_type] }
     end
