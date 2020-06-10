@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @scraped_product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @scraped_product.price %>
+</p>
+
+<p>
+  <strong>Day scraped:</strong>
+  <%= @scraped_product.day_scraped %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @scraped_product.manufacturer %>
+</p>
+
+<%= link_to 'Edit', edit_scraped_product_path(@scraped_product) %> |
+<%= link_to 'Back', scraped_products_path %>

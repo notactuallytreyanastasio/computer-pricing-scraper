@@ -1,0 +1,37 @@
+<%= form_with(model: scraped_product, local: true) do |form| %>
+  <% if scraped_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scraped_product.errors.count, "error") %> prohibited this scraped_product from being saved:</h2>
+
+      <ul>
+        <% scraped_product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :day_scraped %>
+    <%= form.datetime_select :day_scraped %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manufacturer %>
+    <%= form.text_field :manufacturer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
