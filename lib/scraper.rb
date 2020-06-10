@@ -31,8 +31,8 @@ module EVGA
 
       @i = 0
       prices_hash.map do |product_name, price|
-        link = purchase_links[i]
-        @i = @i + 1
+        # link = purchase_links[i]
+        # @i = @i + 1
         product = ScrapedProduct.new(
           name: product_name,
           price: price,
