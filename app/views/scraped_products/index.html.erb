@@ -14,7 +14,8 @@
       <th>Name</th>
       <th>Price</th>
       <th>Day scraped</th>
-      <th colspan="3"></th>
+      <th>Price History</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -24,6 +25,7 @@
         <td><a href="https://evga.com/<%=scraped_product.link %>"><%= scraped_product.name %></a></td>
         <td><%= scraped_product.price %></td>
         <td><%= scraped_product.day_scraped %></td>
+        <td><a href="/scraped_products/<%= scraped_product.id %>">View</a></td>
       </tr>
     <% end %>
   </tbody>

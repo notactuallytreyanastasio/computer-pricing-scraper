@@ -6,6 +6,7 @@ module EVGA
     GPUS_URI = URI("https://www.evga.com/products/ProductList.aspx?type=0")
     MOTHERBOARDS_URI = URI("https://www.evga.com/products/ProductList.aspx?type=1")
 
+    SCRAPABLE = ["motherboard", "gpu", "power_supply"]
     def initialize(scrape_type)
       @scrape_type = scrape_type
       case @scrape_type
@@ -18,6 +19,8 @@ module EVGA
       when "power_supply"
         @page = Nokogiri::HTML(Net::HTTP.get_response(POWER_SUPPLIES_URI).body)
         @offset = 7
+      else
+        raise "Invalid entry given to scrape. Valid entries are #{SCRAPABLE.join(", ")}"
       end
     end
 

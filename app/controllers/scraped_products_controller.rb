@@ -1,5 +1,5 @@
 class ScrapedProductsController < ApplicationController
-  before_action :set_scraped_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_scraped_product, only: [:edit, :update, :destroy]
 
   # GET /scraped_products
   # GET /scraped_products.json
@@ -13,6 +13,8 @@ class ScrapedProductsController < ApplicationController
   # GET /scraped_products/1
   # GET /scraped_products/1.json
   def show
+    @scraped_product = ScrapedProduct.find(params[:id])
+    @historic_products = ScrapedProduct.where(name: @scraped_product.name)
   end
 
   # GET /scraped_products/new
@@ -72,6 +74,6 @@ class ScrapedProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scraped_product_params
-      params.require(:scraped_product).permit(:name, :price, :day_scraped, :manufacturer)
+      params.require(:scraped_product).permit(:name, :price, :day_scraped, :link)
     end
 end
