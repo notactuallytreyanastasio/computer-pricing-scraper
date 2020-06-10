@@ -21,7 +21,7 @@
   <tbody>
     <% @scraped_products.each do |scraped_product| %>
       <tr>
-        <td><%= scraped_product.name %></td>
+        <td><a href="https://evga.com/<%=scraped_product.link %>"><%= scraped_product.name %></a></td>
         <td><%= scraped_product.price %></td>
         <td><%= scraped_product.day_scraped %></td>
       </tr>
