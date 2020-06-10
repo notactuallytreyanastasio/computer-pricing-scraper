@@ -1,24 +1,14 @@
-# README
+# A simple pricing scraper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This has no dependencies outside typical rails stuff.
 
-Things you may want to cover:
+It simply uses `net/http` to grab some specific pages from the EVGA website and extracts pricing information.
+It is met to be run daily to monitor pricing of parts in this supply chain.
+On the deployed version, I have a job that runs a scrape once a day to monitor this.
 
-* Ruby version
+It does nothing 'the rails way' and is built as a one-off hack but it does the job its intended to.
 
-* System dependencies
+I am going to add some ascii graphing to the pricing history, and potentially add monitors from another site.
+Who knows, its a project I am doing for a family member with an interest in this.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+As such, if you stumble upon this randomly, please dont open any issues or PRs, I plan on not engaging anyone but the single end user I built it for.
