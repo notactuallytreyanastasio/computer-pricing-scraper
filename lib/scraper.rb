@@ -22,18 +22,22 @@ module EVGA
     end
 
     def scrape
-      all_links     = @page.css('a').to_a
-      product_links = all_links.select { |link| link.attributes["class"]&.value == "pl-list-pname" }
-      product_names = product_links.map { |link| link.children.first.text }
-      prices        = @page.css('.pl-list-pricing').to_a.map { |p| p.text }.map { |p| p.squish }
-      clean_prices  = prices.map { |price| sanitize_price(price) }
-      prices_hash   = Hash[product_names.zip(clean_prices)]
+      all_links      = @page.css('a').to_a
+      product_links  = all_links.select { |link| link.attributes["class"]&.value == "pl-list-pname" }
+      product_names  = product_links.map { |link| link.children.first.text }
+      prices         = @page.css('.pl-list-pricing').to_a.map { |p| p.text }.map { |p| p.squish }
+      clean_prices   = prices.map { |price| sanitize_price(price) }
+      prices_hash    = Hash[product_names.zip(clean_prices)]
+
+      @i = 0
       prices_hash.map do |product_name, price|
+        link = purchase_links[i]
+        @i = @i + 1
         product = ScrapedProduct.new(
           name: product_name,
           price: price,
           product_type: @scrape_type,
-          day_scraped: Date.today
+          day_scraped: Date.today,
         )
         product.save
         product
