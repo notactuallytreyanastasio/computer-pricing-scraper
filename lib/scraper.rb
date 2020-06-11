@@ -12,8 +12,7 @@ module EVGA
       case @scrape_type
       when "motherboard"
         @page = Nokogiri::HTML(Net::HTTP.get_response(MOTHERBOARDS_URI).body)
-        @offset = 8
-      when "gpu"
+        @offset = 8 when "gpu"
         @page = Nokogiri::HTML(Net::HTTP.get_response(GPUS_URI).body)
         @offset = 8
       when "power_supply"
@@ -41,7 +40,7 @@ module EVGA
           name: product_name,
           price: price,
           product_type: @scrape_type,
-          day_scraped: Date.today,
+          day_scraped: Time.now,
           link: link,
         )
         product.save
